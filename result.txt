@@ -1,104 +1,104 @@
-background	72.34%
-bread	15.70%
-strawberry	6.89%
-rice	1.38%
-cilantro mint	0.27%
-soup	0.25%
-corn	0.21%
-shrimp	0.13%
-candy	0.13%
-hamburg	0.13%
-noodles	0.12%
-banana	0.11%
-cherry	0.10%
-egg tart	0.10%
-apricot	0.10%
-pizza	0.10%
-avocado	0.10%
-pie	0.10%
-blueberry	0.09%
-hanamaki baozi	0.09%
-pasta	0.08%
-wonton dumplings	0.07%
-french fries	0.07%
-shellfish	0.06%
-raspberry	0.06%
-chocolate	0.06%
-fish	0.05%
-mango	0.05%
-date	0.04%
-crab	0.04%
-tofu	0.04%
-biscuit	0.04%
-popcorn	0.03%
-pudding	0.03%
-snow peas	0.03%
-apple	0.03%
-sauce	0.03%
-lamb	0.03%
-cabbage	0.03%
-celery stick	0.02%
-ice cream	0.02%
-olives	0.02%
-broccoli	0.02%
-cheese butter	0.02%
-eggplant	0.02%
-bamboo shoots	0.02%
-asparagus	0.02%
-egg	0.02%
-fried meat	0.02%
-bean sprouts	0.02%
-wine	0.02%
+background	56.37%
+chicken duck	17.22%
+carrot	3.83%
+cucumber	3.69%
+ice cream	2.93%
+French beans	1.87%
+bread	1.28%
+celery stick	1.16%
+sausage	0.84%
+broccoli	0.58%
+white radish	0.49%
+pumpkin	0.43%
+asparagus	0.39%
+bamboo shoots	0.36%
+king oyster mushroom	0.33%
+pork	0.33%
+green beans	0.33%
+candy	0.32%
+cilantro mint	0.30%
+tomato	0.29%
+egg tart	0.26%
+lettuce	0.24%
+french fries	0.23%
+fried meat	0.23%
+snow peas	0.20%
+pepper	0.20%
+pudding	0.20%
+lamb	0.20%
+biscuit	0.19%
+chocolate	0.19%
+popcorn	0.19%
+onion	0.19%
+steak	0.19%
+sauce	0.18%
+cabbage	0.18%
+okra	0.17%
+cheese butter	0.15%
+bean sprouts	0.15%
+shiitake	0.14%
+ginger	0.13%
+watermelon	0.13%
+kelp	0.13%
+rape	0.12%
+crab	0.11%
+cake	0.11%
+shrimp	0.11%
+soup	0.11%
+orange	0.11%
+corn	0.10%
+fish	0.10%
+seaweed	0.10%
+spring onion	0.09%
+cauliflower	0.08%
+shellfish	0.08%
+wine	0.08%
+melon	0.07%
+garlic	0.07%
+enoki mushroom	0.06%
+kiwi	0.06%
+milkshake	0.05%
+pizza	0.05%
+potato	0.04%
+grape	0.04%
+hamburg	0.04%
+coffee	0.04%
+juice	0.04%
+milk	0.04%
+hanamaki baozi	0.04%
+eggplant	0.03%
+pineapple	0.03%
+wonton dumplings	0.03%
+oyster mushroom	0.03%
+tea	0.03%
+pasta	0.03%
+tofu	0.03%
+rice	0.02%
+noodles	0.02%
+lemon	0.02%
+pear	0.02%
+almond	0.02%
+white button mushroom	0.02%
+fig	0.02%
+pie	0.02%
+salad	0.02%
 peach	0.02%
-cake	0.02%
-cauliflower	0.01%
-lemon	0.01%
-sausage	0.01%
-potato	0.01%
-peanut	0.01%
-onion	0.01%
-milkshake	0.01%
-garlic	0.01%
-juice	0.01%
-tea	0.01%
-walnut	0.01%
-chicken duck	0.01%
-pepper	0.01%
-carrot	0.01%
+other ingredients	0.02%
+cashew	0.02%
 red beans	0.01%
-soy	0.01%
-pork	0.01%
-coffee	0.01%
-almond	0.01%
-steak	0.01%
 dried cranberries	0.01%
-tomato	0.01%
-white radish	0.01%
-cashew	0.01%
-melon	0.01%
-shiitake	0.01%
-kiwi	0.01%
-rape	0.01%
-fig	0.01%
-watermelon	0.01%
-cucumber	0.01%
-green beans	0.01%
-lettuce	0.01%
-grape	0.01%
-okra	0.01%
-pineapple	0.01%
-milk	0.01%
-pear	0.01%
-kelp	0.01%
-pumpkin	0.01%
-king oyster mushroom	0.01%
-French beans	0.01%
-orange	0.01%
-seaweed	0.01%
-spring onion	0.01%
-enoki mushroom	0.00%
-ginger	0.00%
-oyster mushroom	0.00%
-other ingredients	0.00%
-white button mushroom	0.00%
-salad	0.00%
+olives	0.01%
+mango	0.01%
+raspberry	0.01%
+soy	0.01%
+peanut	0.01%
+walnut	0.01%
+apple	0.01%
+egg	0.01%
+cherry	0.01%
+date	0.01%
+apricot	0.01%
+avocado	0.01%
+banana	0.01%
+blueberry	0.01%
+strawberry	0.00%
