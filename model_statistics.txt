@@ -1,0 +1,7 @@
+Model	Average Accuracy	Max Accuracy	Min Accuracy	Std Deviation
+Model 1	72.32	98.72	0.35	15.07
+Model 2	54.65	96.92	0.15	17.97
+Model 3	57.66	96.24	1.26	16.56
+Model 4	46.29	91.68	0.29	17.30
+Majority Voting	63.82	97.79	0.97	16.56
+Weighted Voting	72.61	98.65	1.14	15.02

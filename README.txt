@@ -1,0 +1,2 @@
+log:
+在实现image3的时候，语义分割给出的结果是pasta，但是IR给出的结果是shrimp
