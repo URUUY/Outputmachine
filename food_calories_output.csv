@@ -1,8 +1,4 @@
-Food Name,Percentage,Calories
-chicken duck,17.22%,187
-carrot,3.83%,16.1
-cucumber,3.69%,30.15
-ice cream,2.93%,273.24
-French beans,1.87%,43.75
-bread,1.28%,77.14
-celery stick,1.16%,6.4
+Food Name,Percentage,Calories (kcal)
+bread,31.91%,77.14
+cake,16.66%,261.97
+tomato,7.94%,22.14

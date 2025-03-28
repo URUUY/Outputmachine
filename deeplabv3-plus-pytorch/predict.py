@@ -125,7 +125,7 @@ if __name__ == "__main__":
             #r_image.show()
 
             # 生成新的保存路径
-            save_path = os.path.join(output_dir, os.path.basename(os.path.splitext(img)[0]) + "_predicted1.jpg")
+            save_path = os.path.join(output_dir, os.path.basename(os.path.splitext(img)[0]) + "_predicted1.png")
 
             # 保存预测结果
             r_image.save(save_path)

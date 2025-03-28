@@ -71,10 +71,10 @@ def process_image(image_file):
 
     # 读取预测结果
     predicted_paths = [
-        os.path.join(output_dir, f"{base_name}_predicted1.jpg"),  # 模型1
-        os.path.join(output_dir, f"{base_name}_predicted2.jpg"),  # 模型2
-        os.path.join(output_dir, f"{base_name}_predicted3.jpg"),  # 模型3
-        os.path.join(output_dir, f"{base_name}_predicted4.jpg")   # 模型4
+        os.path.join(output_dir, f"{base_name}_predicted1.png"),  # 模型1
+        os.path.join(output_dir, f"{base_name}_predicted2.png"),  # 模型2
+        os.path.join(output_dir, f"{base_name}_predicted3.png"),  # 模型3
+        os.path.join(output_dir, f"{base_name}_predicted4.png")   # 模型4
     ]
     seg_results = [cv2.imread(path, 0) for path in predicted_paths]
 
@@ -88,8 +88,8 @@ def process_image(image_file):
     weighted_result = weighted_voting(seg_results, miou_scores)
 
     # 保存投票结果
-    cv2.imwrite(os.path.join(final_output_dir, f"{base_name}_majority.jpg"), majority_result)
-    cv2.imwrite(os.path.join(final_output_dir, f"{base_name}_weighted.jpg"), weighted_result)
+    cv2.imwrite(os.path.join(final_output_dir, f"{base_name}_majority.png"), majority_result)
+    cv2.imwrite(os.path.join(final_output_dir, f"{base_name}_weighted.png"), weighted_result)
 
     # 读取正确掩膜
     mask_path = os.path.join(mask_dir, f"{base_name}.png")  # 假设掩膜文件名与图像文件名相同
@@ -117,7 +117,7 @@ def process_image(image_file):
     print(f"{image_file} 处理完成。")
 
 # 使用多线程处理图像
-with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
     executor.map(process_image, image_files)
 
 print("所有图像处理完成，准确率结果已保存到 accuracy_results2.txt 文件中。")

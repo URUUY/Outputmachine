@@ -1,104 +1,104 @@
-background	56.37%
-chicken duck	17.22%
-carrot	3.83%
-cucumber	3.69%
-ice cream	2.93%
-French beans	1.87%
-bread	1.28%
-celery stick	1.16%
-sausage	0.84%
-broccoli	0.58%
-white radish	0.49%
-pumpkin	0.43%
-asparagus	0.39%
-bamboo shoots	0.36%
-king oyster mushroom	0.33%
-pork	0.33%
-green beans	0.33%
-candy	0.32%
-cilantro mint	0.30%
-tomato	0.29%
-egg tart	0.26%
-lettuce	0.24%
-french fries	0.23%
-fried meat	0.23%
-snow peas	0.20%
-pepper	0.20%
-pudding	0.20%
-lamb	0.20%
-biscuit	0.19%
-chocolate	0.19%
-popcorn	0.19%
-onion	0.19%
-steak	0.19%
-sauce	0.18%
-cabbage	0.18%
-okra	0.17%
-cheese butter	0.15%
-bean sprouts	0.15%
-shiitake	0.14%
-ginger	0.13%
-watermelon	0.13%
-kelp	0.13%
-rape	0.12%
-crab	0.11%
-cake	0.11%
-shrimp	0.11%
-soup	0.11%
-orange	0.11%
-corn	0.10%
-fish	0.10%
-seaweed	0.10%
-spring onion	0.09%
-cauliflower	0.08%
-shellfish	0.08%
-wine	0.08%
-melon	0.07%
-garlic	0.07%
-enoki mushroom	0.06%
-kiwi	0.06%
-milkshake	0.05%
-pizza	0.05%
-potato	0.04%
-grape	0.04%
-hamburg	0.04%
-coffee	0.04%
-juice	0.04%
-milk	0.04%
-hanamaki baozi	0.04%
-eggplant	0.03%
-pineapple	0.03%
-wonton dumplings	0.03%
-oyster mushroom	0.03%
-tea	0.03%
-pasta	0.03%
-tofu	0.03%
-rice	0.02%
-noodles	0.02%
-lemon	0.02%
-pear	0.02%
-almond	0.02%
-white button mushroom	0.02%
-fig	0.02%
-pie	0.02%
-salad	0.02%
-peach	0.02%
-other ingredients	0.02%
-cashew	0.02%
-red beans	0.01%
-dried cranberries	0.01%
-olives	0.01%
-mango	0.01%
-raspberry	0.01%
-soy	0.01%
-peanut	0.01%
-walnut	0.01%
-apple	0.01%
-egg	0.01%
-cherry	0.01%
-date	0.01%
-apricot	0.01%
-avocado	0.01%
-banana	0.01%
-blueberry	0.01%
-strawberry	0.00%
+background	42.14%
+bread	31.91%
+cake	16.66%
+tomato	7.94%
+strawberry	0.59%
+grape	0.48%
+pepper	0.25%
+orange	0.02%
+candy	0.00%
+egg tart	0.00%
+french fries	0.00%
+chocolate	0.00%
+biscuit	0.00%
+popcorn	0.00%
+pudding	0.00%
+ice cream	0.00%
+cheese butter	0.00%
+wine	0.00%
+milkshake	0.00%
+coffee	0.00%
+juice	0.00%
+milk	0.00%
+tea	0.00%
+almond	0.00%
+red beans	0.00%
+cashew	0.00%
+dried cranberries	0.00%
+soy	0.00%
+walnut	0.00%
+peanut	0.00%
+egg	0.00%
+apple	0.00%
+date	0.00%
+apricot	0.00%
+avocado	0.00%
+banana	0.00%
+cherry	0.00%
+blueberry	0.00%
+raspberry	0.00%
+mango	0.00%
+olives	0.00%
+peach	0.00%
+lemon	0.00%
+pear	0.00%
+fig	0.00%
+pineapple	0.00%
+kiwi	0.00%
+melon	0.00%
+watermelon	0.00%
+steak	0.00%
+pork	0.00%
+chicken duck	0.00%
+sausage	0.00%
+fried meat	0.00%
+lamb	0.00%
+sauce	0.00%
+crab	0.00%
+fish	0.00%
+shellfish	0.00%
+shrimp	0.00%
+soup	0.00%
+corn	0.00%
+hamburg	0.00%
+pizza	0.00%
+hanamaki baozi	0.00%
+wonton dumplings	0.00%
+pasta	0.00%
+noodles	0.00%
+rice	0.00%
+pie	0.00%
+tofu	0.00%
+eggplant	0.00%
+potato	0.00%
+garlic	0.00%
+cauliflower	0.00%
+kelp	0.00%
+seaweed	0.00%
+spring onion	0.00%
+rape	0.00%
+ginger	0.00%
+okra	0.00%
+lettuce	0.00%
+pumpkin	0.00%
+cucumber	0.00%
+white radish	0.00%
+carrot	0.00%
+asparagus	0.00%
+bamboo shoots	0.00%
+broccoli	0.00%
+celery stick	0.00%
+cilantro mint	0.00%
+snow peas	0.00%
+cabbage	0.00%
+bean sprouts	0.00%
+onion	0.00%
+green beans	0.00%
+French beans	0.00%
+king oyster mushroom	0.00%
+shiitake	0.00%
+enoki mushroom	0.00%
+oyster mushroom	0.00%
+white button mushroom	0.00%
+salad	0.00%
+other ingredients	0.00%

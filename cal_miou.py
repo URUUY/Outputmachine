@@ -75,12 +75,12 @@ def process_image(image_file, image_dir, mask_dir, output_dir, final_output_dir,
         return None
 
     # 读取每个模型的预测结果
-    model1_pred_path = os.path.join(output_dir, f"{base_name}_predicted1.jpg")
-    model2_pred_path = os.path.join(output_dir, f"{base_name}_predicted2.jpg")
-    model3_pred_path = os.path.join(output_dir, f"{base_name}_predicted3.jpg")
-    model4_pred_path = os.path.join(output_dir, f"{base_name}_predicted4.jpg")
-    majority_pred_path = os.path.join(final_output_dir, f"{base_name}_majority.jpg")
-    weighted_pred_path = os.path.join(final_output_dir, f"{base_name}_weighted.jpg")
+    model1_pred_path = os.path.join(output_dir, f"{base_name}_predicted1.png")
+    model2_pred_path = os.path.join(output_dir, f"{base_name}_predicted2.png")
+    model3_pred_path = os.path.join(output_dir, f"{base_name}_predicted3.png")
+    model4_pred_path = os.path.join(output_dir, f"{base_name}_predicted4.png")
+    majority_pred_path = os.path.join(final_output_dir, f"{base_name}_majority.png")
+    weighted_pred_path = os.path.join(final_output_dir, f"{base_name}_weighted.png")
 
     # 检查预测结果是否存在
     if not all(os.path.exists(p) for p in [model1_pred_path, model2_pred_path, model3_pred_path, model4_pred_path, majority_pred_path, weighted_pred_path]):

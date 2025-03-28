@@ -1,8 +1,4 @@
-0.png	67
-48.png	89
-58.png	93
-8.png	8
-82.png	76
-84.png	84
-88.png	89
-96.png	89
+0.png	8
+10.png	54
+58.png	58
+73.png	73
