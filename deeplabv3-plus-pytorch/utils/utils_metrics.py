@@ -66,7 +66,7 @@ def compute_mIoU(gt_dir, pred_dir, png_name_list, num_classes, name_classes=None
     #   获得验证集图像分割结果路径列表，方便直接读取
     #------------------------------------------------#
     gt_imgs     = [join(gt_dir, x + ".png") for x in png_name_list]  
-    pred_imgs   = [join(pred_dir, x + "_predicted2.png") for x in png_name_list]  
+    pred_imgs   = [join(pred_dir, x + "_predicted3.png") for x in png_name_list]  
 
     #------------------------------------------------#
     #   读取每一个（图片-标签）对

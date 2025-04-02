@@ -22,7 +22,7 @@ def read_food_percentage(file_path):
                     print(f"Skipping malformed line: {line}")
     return food_list
 
-def get_food_calories(food_name):
+def get_food_nutrition(food_name):
     headers = {
         'x-app-id': APP_ID,
         'x-app-key': API_KEY,
@@ -35,7 +35,12 @@ def get_food_calories(food_name):
         response.raise_for_status() 
         data = response.json()
         if 'foods' in data and len(data['foods']) > 0:
-            return data['foods'][0].get('nf_calories')
+            food_info = data['foods'][0]
+            return {
+                'calories': food_info.get('nf_calories'),
+                'weight_grams': food_info.get('nf_serving_weight_grams'),
+                'serving_size': food_info.get('serving_weight_grams')  # Alternative field
+            }
     except requests.exceptions.RequestException as e:
         print(f"API request failed for {food_name}: {e}")
     return None
@@ -43,9 +48,9 @@ def get_food_calories(food_name):
 def write_output(file_path, food_data):
     with open(file_path, 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
-        writer.writerow(["Food Name", "Percentage", "Calories (kcal)"])
-        for food, percentage, calories in food_data:
-            writer.writerow([food, percentage, calories])
+        writer.writerow(["Food Name", "Percentage", "Calories (kcal)", "Weight (g)", "Serving Size"])
+        for food, percentage, calories, weight, serving_size in food_data:
+            writer.writerow([food, percentage, calories, weight, serving_size])
 
 def main():
     food_list = read_food_percentage(INPUT_FILE)
@@ -55,12 +60,19 @@ def main():
         try:
             percentage_float = float(percentage.strip('%'))
             if percentage_float > 1:  # Only process foods with >1% presence
-                calories = get_food_calories(food)
-                if calories is not None:
-                    food_data.append((food, percentage, calories))
-                    print(f"Found calories for {food}: {calories} kcal")
+                nutrition = get_food_nutrition(food)
+                if nutrition is not None:
+                    calories = nutrition['calories']
+                    weight = nutrition['weight_grams']
+                    serving_size = nutrition['serving_size']
+                    
+                    # Use weight_grams first, fall back to serving_size if not available
+                    final_weight = weight if weight is not None else serving_size
+                    
+                    food_data.append((food, percentage, calories, final_weight, serving_size))
+                    print(f"Found data for {food}: {calories} kcal, {final_weight}g")
                 else:
-                    print(f"No calorie data found for {food}")
+                    print(f"No nutrition data found for {food}")
         except ValueError:
             print(f"Invalid percentage value {percentage} for {food}")
 

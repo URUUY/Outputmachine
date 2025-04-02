@@ -295,9 +295,14 @@ with open(result_file, "w", encoding="utf-8") as f:
         class_names = data_train.classes
         # Get predicted class name
         predicted_class = class_names[predicted_class_idx]
+        filename_without_png = image_file.replace(".png", "")
 
+        a = int(filename_without_png)
+        b = int(predicted_class)
+        print(a, b)
+        f.write(f"{name_classes[a]}\t->\t{name_classes[b]}\n")
         # Write result to file
-        f.write(f"{image_file}\t{predicted_class}\n")
+        #f.write(f"{image_file}\t{predicted_class}\n")
         #print(f"Processed: {image_file} -> Predicted class: {predicted_class}")
 
 print(f"All image prediction results saved to: {result_file}")

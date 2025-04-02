@@ -22,14 +22,14 @@ if __name__ == "__main__":
 
     # 用户提供的真实掩码和预测掩码目录
     gt_dir = "D:\FoodSeg103_img\odlabel"  # 替换为真实掩码目录路径
-    pred_dir = "D:\FoodSeg103_img\m2"  # 替换为预测掩码目录路径
+    pred_dir = "D:\FoodSeg103_img\m3"  # 替换为预测掩码目录路径
 
     # 获取所有有效样本ID（确保预测文件存在）
     image_ids = []
     for filename in os.listdir(gt_dir):
         if filename.endswith('.png'):
             image_id = os.path.splitext(filename)[0]
-            pred_file = os.path.join(pred_dir, f"{image_id}_predicted2.png")
+            pred_file = os.path.join(pred_dir, f"{image_id}_predicted3.png")
             if os.path.exists(pred_file):
                 image_ids.append(image_id)
             else:

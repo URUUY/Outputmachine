@@ -1,4 +1,4 @@
-0.png	8
-10.png	54
-58.png	58
-73.png	73
+background	->	ice cream
+cake	->	fish
+bread	->	bread
+tomato	->	tomato
