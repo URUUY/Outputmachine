@@ -1,11 +1,15 @@
-background	42.14%
-bread	31.91%
-cake	16.66%
-tomato	7.94%
-strawberry	0.59%
-grape	0.48%
-pepper	0.25%
-orange	0.02%
+background	34.88%
+chicken duck	34.24%
+cilantro mint	19.34%
+broccoli	9.51%
+lettuce	0.97%
+bread	0.72%
+shrimp	0.16%
+rice	0.08%
+tomato	0.05%
+fish	0.02%
+sausage	0.01%
+steak	0.01%
 candy	0.00%
 egg tart	0.00%
 french fries	0.00%
@@ -15,6 +19,7 @@ popcorn	0.00%
 pudding	0.00%
 ice cream	0.00%
 cheese butter	0.00%
+cake	0.00%
 wine	0.00%
 milkshake	0.00%
 coffee	0.00%
@@ -34,6 +39,7 @@ date	0.00%
 apricot	0.00%
 avocado	0.00%
 banana	0.00%
+strawberry	0.00%
 cherry	0.00%
 blueberry	0.00%
 raspberry	0.00%
@@ -44,20 +50,17 @@ lemon	0.00%
 pear	0.00%
 fig	0.00%
 pineapple	0.00%
+grape	0.00%
 kiwi	0.00%
 melon	0.00%
+orange	0.00%
 watermelon	0.00%
-steak	0.00%
 pork	0.00%
-chicken duck	0.00%
-sausage	0.00%
 fried meat	0.00%
 lamb	0.00%
 sauce	0.00%
 crab	0.00%
-fish	0.00%
 shellfish	0.00%
-shrimp	0.00%
 soup	0.00%
 corn	0.00%
 hamburg	0.00%
@@ -66,7 +69,6 @@ hanamaki baozi	0.00%
 wonton dumplings	0.00%
 pasta	0.00%
 noodles	0.00%
-rice	0.00%
 pie	0.00%
 tofu	0.00%
 eggplant	0.00%
@@ -79,20 +81,18 @@ spring onion	0.00%
 rape	0.00%
 ginger	0.00%
 okra	0.00%
-lettuce	0.00%
 pumpkin	0.00%
 cucumber	0.00%
 white radish	0.00%
 carrot	0.00%
 asparagus	0.00%
 bamboo shoots	0.00%
-broccoli	0.00%
 celery stick	0.00%
-cilantro mint	0.00%
 snow peas	0.00%
 cabbage	0.00%
 bean sprouts	0.00%
 onion	0.00%
+pepper	0.00%
 green beans	0.00%
 French beans	0.00%
 king oyster mushroom	0.00%

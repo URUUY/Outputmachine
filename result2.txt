@@ -1,4 +1,4 @@
 background	->	ice cream
-cake	->	fish
-bread	->	bread
-tomato	->	tomato
+chicken duck	->	chicken duck
+broccoli	->	cilantro mint
+cilantro mint	->	cilantro mint
