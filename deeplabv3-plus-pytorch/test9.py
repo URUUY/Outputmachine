@@ -3,8 +3,8 @@ from tqdm import tqdm
 from utils.utils_metrics import compute_mIoU, show_results
 
 if __name__ == "__main__":
-    miou_mode = 2  # 只计算mIoU
-    num_classes = 104  # 根据你的类别数调整
+    miou_mode = 2  # Only calculate mIoU
+    num_classes = 104  # Adjust based on your number of classes
     name_classes = [
     "background", "candy", "egg tart", "french fries", "chocolate", "biscuit", "popcorn", "pudding", "ice cream",
     "cheese butter", "cake", "wine", "milkshake", "coffee", "juice", "milk", "tea", "almond", "red beans", "cashew",
@@ -20,11 +20,11 @@ if __name__ == "__main__":
     "other ingredients"
     ]
 
-    # 用户提供的真实掩码和预测掩码目录
-    gt_dir = "D:\FoodSeg103_img\odlabel"  # 替换为真实掩码目录路径
-    pred_dir = "D:\FoodSeg103_img\m3"  # 替换为预测掩码目录路径
+    # User-provided ground truth and prediction mask directories
+    gt_dir = "D:\FoodSeg103_img\odlabel"  # Replace with your ground truth mask directory path
+    pred_dir = "D:\FoodSeg103_img\m3"  # Replace with your prediction mask directory path
 
-    # 获取所有有效样本ID（确保预测文件存在）
+    # Get all valid sample IDs (ensure prediction files exist)
     image_ids = []
     for filename in os.listdir(gt_dir):
         if filename.endswith('.png'):
@@ -33,13 +33,13 @@ if __name__ == "__main__":
             if os.path.exists(pred_file):
                 image_ids.append(image_id)
             else:
-                print(f"警告: 预测文件 {pred_file} 不存在，跳过 {filename}")
+                print(f"Warning: Prediction file {pred_file} not found, skipping {filename}")
 
     miou_out_path = "miou_out"
     os.makedirs(miou_out_path, exist_ok=True)
 
     if miou_mode == 0 or miou_mode == 2:
-        print("正在计算mIoU...")
+        print("Calculating mIoU...")
         hist, IoUs, PA_Recall, Precision = compute_mIoU(
             gt_dir, 
             pred_dir, 
@@ -47,5 +47,5 @@ if __name__ == "__main__":
             num_classes, 
             name_classes,
         )
-        print("mIoU计算完成。")
+        print("mIoU calculation completed.")
         show_results(miou_out_path, hist, IoUs, PA_Recall, Precision, name_classes)

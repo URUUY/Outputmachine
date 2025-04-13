@@ -33,13 +33,13 @@ class InvertedResidual(nn.Module):
         if expand_ratio == 1:
             self.conv = nn.Sequential(
                 #--------------------------------------------#
-                #   进行3x3的逐层卷积，进行跨特征点的特征提取
+                #   3x3 depthwise convolution for cross-feature extraction
                 #--------------------------------------------#
                 nn.Conv2d(hidden_dim, hidden_dim, 3, stride, 1, groups=hidden_dim, bias=False),
                 BatchNorm2d(hidden_dim),
                 nn.ReLU6(inplace=True),
                 #-----------------------------------#
-                #   利用1x1卷积进行通道数的调整
+                #   1x1 convolution for channel adjustment
                 #-----------------------------------#
                 nn.Conv2d(hidden_dim, oup, 1, 1, 0, bias=False),
                 BatchNorm2d(oup),
@@ -47,19 +47,19 @@ class InvertedResidual(nn.Module):
         else:
             self.conv = nn.Sequential(
                 #-----------------------------------#
-                #   利用1x1卷积进行通道数的上升
+                #   1x1 convolution for channel expansion
                 #-----------------------------------#
                 nn.Conv2d(inp, hidden_dim, 1, 1, 0, bias=False),
                 BatchNorm2d(hidden_dim),
                 nn.ReLU6(inplace=True),
                 #--------------------------------------------#
-                #   进行3x3的逐层卷积，进行跨特征点的特征提取
+                #   3x3 depthwise convolution for cross-feature extraction
                 #--------------------------------------------#
                 nn.Conv2d(hidden_dim, hidden_dim, 3, stride, 1, groups=hidden_dim, bias=False),
                 BatchNorm2d(hidden_dim),
                 nn.ReLU6(inplace=True),
                 #-----------------------------------#
-                #   利用1x1卷积进行通道数的下降
+                #   1x1 convolution for channel reduction
                 #-----------------------------------#
                 nn.Conv2d(hidden_dim, oup, 1, 1, 0, bias=False),
                 BatchNorm2d(oup),

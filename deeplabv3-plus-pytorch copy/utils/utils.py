@@ -1,12 +1,11 @@
 import random
-
 import numpy as np
 import torch
 from PIL import Image
 
 #---------------------------------------------------------#
-#   将图像转换成RGB图像，防止灰度图在预测时报错。
-#   代码仅仅支持RGB图像的预测，所有其它类型的图像都会转化成RGB
+#   Convert the image to RGB to avoid errors with grayscale images.
+#   The code only supports RGB images; all others will be converted to RGB.
 #---------------------------------------------------------#
 def cvtColor(image):
     if len(np.shape(image)) == 3 and np.shape(image)[2] == 3:
@@ -16,7 +15,7 @@ def cvtColor(image):
         return image 
 
 #---------------------------------------------------#
-#   对输入图像进行resize
+#   Resize the input image while maintaining aspect ratio
 #---------------------------------------------------#
 def resize_image(image, size):
     iw, ih  = image.size
@@ -33,14 +32,14 @@ def resize_image(image, size):
     return new_image, nw, nh
     
 #---------------------------------------------------#
-#   获得学习率
+#   Get the current learning rate from the optimizer
 #---------------------------------------------------#
 def get_lr(optimizer):
     for param_group in optimizer.param_groups:
         return param_group['lr']
 
 #---------------------------------------------------#
-#   设置种子
+#   Set random seeds for reproducibility
 #---------------------------------------------------#
 def seed_everything(seed=11):
     random.seed(seed)
@@ -52,7 +51,7 @@ def seed_everything(seed=11):
     torch.backends.cudnn.benchmark = False
 
 #---------------------------------------------------#
-#   设置Dataloader的种子
+#   Set seed for DataLoader workers
 #---------------------------------------------------#
 def worker_init_fn(worker_id, rank, seed):
     worker_seed = rank + seed
@@ -60,10 +59,16 @@ def worker_init_fn(worker_id, rank, seed):
     np.random.seed(worker_seed)
     torch.manual_seed(worker_seed)
 
+#---------------------------------------------------#
+#   Normalize image pixel values to [0, 1]
+#---------------------------------------------------#
 def preprocess_input(image):
     image /= 255.0
     return image
 
+#---------------------------------------------------#
+#   Display model configurations (currently commented out)
+#---------------------------------------------------#
 def show_config(**kwargs):
     print('Configurations:')
     #print('-' * 70)
@@ -73,6 +78,9 @@ def show_config(**kwargs):
         #print('|%25s | %40s|' % (str(key), str(value)))
     #print('-' * 70)
 
+#---------------------------------------------------#
+#   Download pre-trained weights for the specified backbone
+#---------------------------------------------------#
 def download_weights(backbone, model_dir="./model_data"):
     import os
     from torch.hub import load_state_dict_from_url

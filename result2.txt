@@ -1,4 +1,6 @@
-background	->	ice cream
-chicken duck	->	chicken duck
-broccoli	->	cilantro mint
+background	->	tofu
+steak	->	dried cranberries
+lamb	->	lamb
+potato	->	cucumber
+asparagus	->	spring onion
 cilantro mint	->	cilantro mint

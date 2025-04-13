@@ -1,15 +1,18 @@
-background	34.88%
-chicken duck	34.24%
-cilantro mint	19.34%
-broccoli	9.51%
-lettuce	0.97%
-bread	0.72%
-shrimp	0.16%
-rice	0.08%
-tomato	0.05%
-fish	0.02%
-sausage	0.01%
-steak	0.01%
+background	50.31%
+lamb	28.73%
+steak	6.74%
+cilantro mint	6.68%
+potato	4.00%
+asparagus	1.83%
+lettuce	0.84%
+lemon	0.22%
+French beans	0.18%
+pork	0.16%
+broccoli	0.13%
+onion	0.08%
+cucumber	0.08%
+chicken duck	0.02%
+cabbage	0.01%
 candy	0.00%
 egg tart	0.00%
 french fries	0.00%
@@ -46,7 +49,6 @@ raspberry	0.00%
 mango	0.00%
 olives	0.00%
 peach	0.00%
-lemon	0.00%
 pear	0.00%
 fig	0.00%
 pineapple	0.00%
@@ -55,13 +57,15 @@ kiwi	0.00%
 melon	0.00%
 orange	0.00%
 watermelon	0.00%
-pork	0.00%
+sausage	0.00%
 fried meat	0.00%
-lamb	0.00%
 sauce	0.00%
 crab	0.00%
+fish	0.00%
 shellfish	0.00%
+shrimp	0.00%
 soup	0.00%
+bread	0.00%
 corn	0.00%
 hamburg	0.00%
 pizza	0.00%
@@ -69,12 +73,13 @@ hanamaki baozi	0.00%
 wonton dumplings	0.00%
 pasta	0.00%
 noodles	0.00%
+rice	0.00%
 pie	0.00%
 tofu	0.00%
 eggplant	0.00%
-potato	0.00%
 garlic	0.00%
 cauliflower	0.00%
+tomato	0.00%
 kelp	0.00%
 seaweed	0.00%
 spring onion	0.00%
@@ -82,19 +87,14 @@ rape	0.00%
 ginger	0.00%
 okra	0.00%
 pumpkin	0.00%
-cucumber	0.00%
 white radish	0.00%
 carrot	0.00%
-asparagus	0.00%
 bamboo shoots	0.00%
 celery stick	0.00%
 snow peas	0.00%
-cabbage	0.00%
 bean sprouts	0.00%
-onion	0.00%
 pepper	0.00%
 green beans	0.00%
-French beans	0.00%
 king oyster mushroom	0.00%
 shiitake	0.00%
 enoki mushroom	0.00%
