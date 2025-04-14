@@ -19,7 +19,7 @@ def f_score(inputs, target, beta=1, smooth = 1e-5, threhold = 0.5):
     temp_target = target.view(n, -1, ct)
 
     #--------------------------------------------#
-    #   计算dice系数
+    #   Calculate dice coefficient
     #--------------------------------------------#
     temp_inputs = torch.gt(temp_inputs, threhold).float()
     tp = torch.sum(temp_target[...,:-1] * temp_inputs, axis=[0,1])
@@ -30,15 +30,15 @@ def f_score(inputs, target, beta=1, smooth = 1e-5, threhold = 0.5):
     score = torch.mean(score)
     return score
 
-# 设标签宽W，长H
+# Assume label width = W, height = H
 def fast_hist(a, b, n):
     #--------------------------------------------------------------------------------#
-    #   a是转化成一维数组的标签，形状(H×W,)；b是转化成一维数组的预测结果，形状(H×W,)
+    #   a is the label converted to 1D array, shape (H×W,); b is the prediction converted to 1D array, shape (H×W,)
     #--------------------------------------------------------------------------------#
     k = (a >= 0) & (a < n)
     #--------------------------------------------------------------------------------#
-    #   np.bincount计算了从0到n**2-1这n**2个数中每个数出现的次数，返回值形状(n, n)
-    #   返回中，写对角线上的为分类正确的像素点
+    #   np.bincount counts occurrences of each number from 0 to n**2-1, return shape (n, n)
+    #   The diagonal entries represent correctly classified pixels
     #--------------------------------------------------------------------------------#
     return np.bincount(n * a[k].astype(int) + b[k], minlength=n ** 2).reshape(n, n)  
 
@@ -57,31 +57,31 @@ def per_Accuracy(hist):
 def compute_mIoU(gt_dir, pred_dir, png_name_list, num_classes, name_classes=None):  
     print('Num classes', num_classes)  
     #-----------------------------------------#
-    #   创建一个全是0的矩阵，是一个混淆矩阵
+    #   Create a zero matrix as a confusion matrix
     #-----------------------------------------#
     hist = np.zeros((num_classes, num_classes))
     
     #------------------------------------------------#
-    #   获得验证集标签路径列表，方便直接读取
-    #   获得验证集图像分割结果路径列表，方便直接读取
+    #   Get list of validation label paths for direct reading
+    #   Get list of validation segmentation result paths for direct reading
     #------------------------------------------------#
     gt_imgs     = [join(gt_dir, x + ".png") for x in png_name_list]  
     pred_imgs   = [join(pred_dir, x + ".png") for x in png_name_list]  
 
     #------------------------------------------------#
-    #   读取每一个（图片-标签）对
+    #   Read each (image-label) pair
     #------------------------------------------------#
     for ind in range(len(gt_imgs)): 
         #------------------------------------------------#
-        #   读取一张图像分割结果，转化成numpy数组
+        #   Read a segmentation result image and convert to numpy array
         #------------------------------------------------#
         pred = np.array(Image.open(pred_imgs[ind]))  
         #------------------------------------------------#
-        #   读取一张对应的标签，转化成numpy数组
+        #   Read the corresponding label and convert to numpy array
         #------------------------------------------------#
         label = np.array(Image.open(gt_imgs[ind]))  
 
-        # 如果图像分割结果与标签的大小不一样，这张图片就不计算
+        # Skip if segmentation result and label have different sizes
         if len(label.flatten()) != len(pred.flatten()):  
             print(
                 'Skipping: len(gt) = {:d}, len(pred) = {:d}, {:s}, {:s}'.format(
@@ -90,10 +90,10 @@ def compute_mIoU(gt_dir, pred_dir, png_name_list, num_classes, name_classes=None
             continue
 
         #------------------------------------------------#
-        #   对一张图片计算21×21的hist矩阵，并累加
+        #   Calculate 21×21 hist matrix for one image and accumulate
         #------------------------------------------------#
         hist += fast_hist(label.flatten(), pred.flatten(), num_classes)  
-        # 每计算10张就输出一下目前已计算的图片中所有类别平均的mIoU值
+        # Print average mIoU for all classes after every 10 images
         if name_classes is not None and ind > 0 and ind % 10 == 0: 
             print('{:d} / {:d}: mIou-{:0.2f}%; mPA-{:0.2f}%; Accuracy-{:0.2f}%'.format(
                     ind, 
@@ -104,13 +104,13 @@ def compute_mIoU(gt_dir, pred_dir, png_name_list, num_classes, name_classes=None
                 )
             )
     #------------------------------------------------#
-    #   计算所有验证集图片的逐类别mIoU值
+    #   Calculate per-class mIoU for all validation images
     #------------------------------------------------#
     IoUs        = per_class_iu(hist)
     PA_Recall   = per_class_PA_Recall(hist)
     Precision   = per_class_Precision(hist)
     #------------------------------------------------#
-    #   逐类别输出一下mIoU值
+    #   Print mIoU for each class
     #------------------------------------------------#
     if name_classes is not None:
         for ind_class in range(num_classes):
@@ -118,7 +118,7 @@ def compute_mIoU(gt_dir, pred_dir, png_name_list, num_classes, name_classes=None
                 + '; Recall (equal to the PA)-' + str(round(PA_Recall[ind_class] * 100, 2))+ '; Precision-' + str(round(Precision[ind_class] * 100, 2)))
 
     #-----------------------------------------------------------------#
-    #   在所有验证集图像上求所有类别平均的mIoU值，计算时忽略NaN值
+    #   Calculate average mIoU across all classes on all validation images, ignoring NaN values
     #-----------------------------------------------------------------#
     print('===> mIoU: ' + str(round(np.nanmean(IoUs) * 100, 2)) + '; mPA: ' + str(round(np.nanmean(PA_Recall) * 100, 2)) + '; Accuracy: ' + str(round(per_Accuracy(hist) * 100, 2)))  
     return np.array(hist, np.dtype(int)), IoUs, PA_Recall, Precision
@@ -179,4 +179,3 @@ def show_results(miou_out_path, hist, IoUs, PA_Recall, Precision, name_classes, 
             writer_list.append([name_classes[i]] + [str(x) for x in hist[i]])
         writer.writerows(writer_list)
     print("Save confusion_matrix out to " + os.path.join(miou_out_path, "confusion_matrix.csv"))
-            

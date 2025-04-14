@@ -1,5 +1,4 @@
 import os
-
 import cv2
 import numpy as np
 import torch
@@ -10,6 +9,7 @@ from utils.utils import cvtColor, preprocess_input
 
 
 class UnetDataset(Dataset):
+    """Dataset loader for U-Net segmentation model"""
     def __init__(self, annotation_lines, input_shape, num_classes, train, dataset_path):
         super(UnetDataset, self).__init__()
         self.annotation_lines   = annotation_lines
@@ -27,42 +27,49 @@ class UnetDataset(Dataset):
         name            = annotation_line.split()[0]
 
         #-------------------------------#
-        #   从文件中读取图像
+        #   Read image and label files
         #-------------------------------#
         jpg         = Image.open(os.path.join(os.path.join(self.dataset_path, "Images"), name + ".png"))
         png         = Image.open(os.path.join(os.path.join(self.dataset_path, "Labels"), name + ".png"))
+        
         #-------------------------------#
-        #   数据增强
+        #   Apply data augmentation
         #-------------------------------#
-        jpg, png    = self.get_random_data(jpg, png, self.input_shape, random = self.train)
+        jpg, png    = self.get_random_data(jpg, png, self.input_shape, random=self.train)
 
         jpg         = np.transpose(preprocess_input(np.array(jpg, np.float64)), [2,0,1])
         png         = np.array(png)
+        
         #-------------------------------------------------------#
-        #   这里的标签处理方式和普通voc的处理方式不同
-        #   将小于127.5的像素点设置为目标像素点。
+        #   Special label processing different from standard VOC
+        #   Pixels with value <= 127.5 are considered target pixels
         #-------------------------------------------------------#
         modify_png  = np.zeros_like(png)
         modify_png[png <= 127.5] = 1
         seg_labels  = modify_png
+        # Convert to one-hot encoding
         seg_labels  = np.eye(self.num_classes + 1)[seg_labels.reshape([-1])]
         seg_labels  = seg_labels.reshape((int(self.input_shape[0]), int(self.input_shape[1]), self.num_classes + 1))
 
         return jpg, modify_png, seg_labels
 
     def rand(self, a=0, b=1):
+        """Generate random float between a and b"""
         return np.random.rand() * (b - a) + a
 
     def get_random_data(self, image, label, input_shape, jitter=.3, hue=.1, sat=0.7, val=0.3, random=True):
+        """Apply random data augmentation including scaling, flipping and color jitter"""
         image   = cvtColor(image)
         label   = Image.fromarray(np.array(label))
+        
         #------------------------------#
-        #   获得图像的高宽与目标高宽
+        #   Get image and target dimensions
         #------------------------------#
         iw, ih  = image.size
         h, w    = input_shape
 
         if not random:
+            # Non-random preprocessing (for validation)
             iw, ih  = image.size
             scale   = min(w/iw, h/ih)
             nw      = int(iw*scale)
@@ -78,7 +85,7 @@ class UnetDataset(Dataset):
             return new_image, new_label
 
         #------------------------------------------#
-        #   对图像进行缩放并且进行长和宽的扭曲
+        #   Random scaling and aspect ratio distortion
         #------------------------------------------#
         new_ar = iw/ih * self.rand(1-jitter,1+jitter) / self.rand(1-jitter,1+jitter)
         scale = self.rand(0.25, 2)
@@ -92,7 +99,7 @@ class UnetDataset(Dataset):
         label = label.resize((nw,nh), Image.NEAREST)
         
         #------------------------------------------#
-        #   翻转图像
+        #   Random horizontal flip
         #------------------------------------------#
         flip = self.rand()<.5
         if flip: 
@@ -100,7 +107,7 @@ class UnetDataset(Dataset):
             label = label.transpose(Image.FLIP_LEFT_RIGHT)
         
         #------------------------------------------#
-        #   将图像多余的部分加上灰条
+        #   Add gray padding to fill target dimensions
         #------------------------------------------#
         dx = int(self.rand(0, w-nw))
         dy = int(self.rand(0, h-nh))
@@ -111,21 +118,24 @@ class UnetDataset(Dataset):
         image = new_image
         label = new_label
 
-        image_data      = np.array(image, np.uint8)
+        image_data = np.array(image, np.uint8)
+        
         #---------------------------------#
-        #   对图像进行色域变换
-        #   计算色域变换的参数
+        #   Apply random color jitter in HSV space
+        #   Compute color transformation parameters
         #---------------------------------#
-        r               = np.random.uniform(-1, 1, 3) * [hue, sat, val] + 1
+        r = np.random.uniform(-1, 1, 3) * [hue, sat, val] + 1
+        
         #---------------------------------#
-        #   将图像转到HSV上
+        #   Convert to HSV color space
         #---------------------------------#
-        hue, sat, val   = cv2.split(cv2.cvtColor(image_data, cv2.COLOR_RGB2HSV))
-        dtype           = image_data.dtype
+        hue, sat, val = cv2.split(cv2.cvtColor(image_data, cv2.COLOR_RGB2HSV))
+        dtype = image_data.dtype
+        
         #---------------------------------#
-        #   应用变换
+        #   Apply color transformations
         #---------------------------------#
-        x       = np.arange(0, 256, dtype=r.dtype)
+        x = np.arange(0, 256, dtype=r.dtype)
         lut_hue = ((x * r[0]) % 180).astype(dtype)
         lut_sat = np.clip(x * r[1], 0, 255).astype(dtype)
         lut_val = np.clip(x * r[2], 0, 255).astype(dtype)
@@ -135,16 +145,18 @@ class UnetDataset(Dataset):
         
         return image_data, label
 
-# DataLoader中collate_fn使用
+
 def unet_dataset_collate(batch):
-    images      = []
-    pngs        = []
-    seg_labels  = []
+    """Custom collate function for DataLoader to handle our dataset format"""
+    images = []
+    pngs = []
+    seg_labels = []
     for img, png, labels in batch:
         images.append(img)
         pngs.append(png)
         seg_labels.append(labels)
-    images      = torch.from_numpy(np.array(images)).type(torch.FloatTensor)
-    pngs        = torch.from_numpy(np.array(pngs)).long()
-    seg_labels  = torch.from_numpy(np.array(seg_labels)).type(torch.FloatTensor)
+    # Convert to PyTorch tensors
+    images = torch.from_numpy(np.array(images)).type(torch.FloatTensor)
+    pngs = torch.from_numpy(np.array(pngs)).long()
+    seg_labels = torch.from_numpy(np.array(seg_labels)).type(torch.FloatTensor)
     return images, pngs, seg_labels

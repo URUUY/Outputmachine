@@ -1,6 +1,3 @@
-background	->	tofu
-steak	->	dried cranberries
-lamb	->	lamb
-potato	->	cucumber
-asparagus	->	spring onion
-cilantro mint	->	cilantro mint
+background	->	cake
+banana	->	banana
+bread	->	fish

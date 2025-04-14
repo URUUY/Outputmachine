@@ -1,13 +1,13 @@
 import random
-
 import numpy as np
 import torch
 from PIL import Image
 
 
 #---------------------------------------------------------#
-#   将图像转换成RGB图像，防止灰度图在预测时报错。
-#   代码仅仅支持RGB图像的预测，所有其它类型的图像都会转化成RGB
+#   Convert image to RGB format to prevent prediction errors
+#   with grayscale images. Only RGB images are supported,
+#   all other formats will be converted to RGB
 #---------------------------------------------------------#
 def cvtColor(image):
     if len(np.shape(image)) == 3 and np.shape(image)[2] == 3:
@@ -17,7 +17,8 @@ def cvtColor(image):
         return image 
 
 #---------------------------------------------------#
-#   对输入图像进行resize
+#   Resize input image while maintaining aspect ratio
+#   and padding with gray (128,128,128) if needed
 #---------------------------------------------------#
 def resize_image(image, size):
     iw, ih  = image.size
@@ -34,14 +35,15 @@ def resize_image(image, size):
     return new_image, nw, nh
     
 #---------------------------------------------------#
-#   获得学习率
+#   Get current learning rate from optimizer
 #---------------------------------------------------#
 def get_lr(optimizer):
     for param_group in optimizer.param_groups:
         return param_group['lr']
 
 #---------------------------------------------------#
-#   设置种子
+#   Set random seeds for reproducibility across
+#   Python, NumPy, PyTorch (CPU and CUDA)
 #---------------------------------------------------#
 def seed_everything(seed=11):
     random.seed(seed)
@@ -53,7 +55,8 @@ def seed_everything(seed=11):
     torch.backends.cudnn.benchmark = False
 
 #---------------------------------------------------#
-#   设置Dataloader的种子
+#   Seed initialization function for DataLoader workers
+#   to ensure reproducibility with multi-processing
 #---------------------------------------------------#
 def worker_init_fn(worker_id, rank, seed):
     worker_seed = rank + seed
@@ -61,26 +64,30 @@ def worker_init_fn(worker_id, rank, seed):
     np.random.seed(worker_seed)
     torch.manual_seed(worker_seed)
 
+# Normalize image pixel values to [0,1] range
 def preprocess_input(image):
     image /= 255.0
     return image
 
+# Print configuration parameters (currently minimal implementation)
 def show_config(**kwargs):
     print('Configurations:')
+    # Additional formatted printing commented out
     #print('-' * 70)
     #print('|%25s | %40s|' % ('keys', 'values'))
     #print('-' * 70)
     #for key, value in kwargs.items():
-        #print('|%25s | %40s|' % (str(key), str(value)))
+    #    print('|%25s | %40s|' % (str(key), str(value)))
     #print('-' * 70)
 
+# Download pretrained weights for specified backbone model
 def download_weights(backbone, model_dir="./model_data"):
     import os
     from torch.hub import load_state_dict_from_url
     
     download_urls = {
-        'vgg'       : 'https://download.pytorch.org/models/vgg16-397923af.pth',
-        'resnet50'  : 'https://s3.amazonaws.com/pytorch/models/resnet50-19c8e357.pth'
+        'vgg': 'https://download.pytorch.org/models/vgg16-397923af.pth',
+        'resnet50': 'https://s3.amazonaws.com/pytorch/models/resnet50-19c8e357.pth'
     }
     url = download_urls[backbone]
     

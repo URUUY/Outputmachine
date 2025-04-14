@@ -8,13 +8,13 @@ import PIL.Image
 from labelme import utils
 
 '''
-制作自己的语义分割数据集需要注意以下几点：
-1、我使用的labelme版本是3.16.7，建议使用该版本的labelme，有些版本的labelme会发生错误，
-   具体错误为：Too many dimensions: 3 > 2
-   安装方式为命令行pip install labelme==3.16.7
-2、此处生成的标签图是8位彩色图，与视频中看起来的数据集格式不太一样。
-   虽然看起来是彩图，但事实上只有8位，此时每个像素点的值就是这个像素点所属的种类。
-   所以其实和视频中VOC数据集的格式一样。因此这样制作出来的数据集是可以正常使用的。也是正常的。
+Notes for creating your own semantic segmentation dataset:
+1. The labelme version I used is 3.16.7. It's recommended to use this version as some other versions may cause errors,
+   specifically: "Too many dimensions: 3 > 2"
+   Installation command: pip install labelme==3.16.7
+2. The generated label images here are 8-bit color images, which may look different from the dataset format shown in videos.
+   Although they appear as color images, they are actually 8-bit, where each pixel's value represents its class.
+   So it's actually the same format as the VOC dataset in videos. Therefore, datasets created this way work normally.
 '''
 if __name__ == '__main__':
     jpgs_path   = "datasets/JPEGImages"

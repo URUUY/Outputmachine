@@ -23,7 +23,6 @@ def process_dataset(image_dir, mask_dir, output_image_dir, output_mask_dir):
             print(f"Warning: Mask for {img_name} not found, skipping...")
             continue
         
-        # 读取图像和掩码
         img = cv2.imread(img_path, cv2.IMREAD_COLOR)
         mask = cv2.imread(mask_path, cv2.IMREAD_UNCHANGED)
         
@@ -31,20 +30,16 @@ def process_dataset(image_dir, mask_dir, output_image_dir, output_mask_dir):
             print(f"Error loading {img_name}, skipping...")
             continue
         
-        # 统一缩放
         img_resized = resize_image(img)
         mask_resized = cv2.resize(mask, (img_resized.shape[1], img_resized.shape[0]), interpolation=cv2.INTER_NEAREST)
         
-        # 保存图像 (JPG格式)
         new_img_name = os.path.splitext(img_name)[0] + ".jpg"
         cv2.imwrite(os.path.join(output_image_dir, new_img_name), img_resized, [int(cv2.IMWRITE_JPEG_QUALITY), 95])
         
-        # 保存掩码 (PNG格式)
         cv2.imwrite(os.path.join(output_mask_dir, img_name), mask_resized)
     
     print("Processing completed.")
 
-# 示例用法
 image_folder = r"F:\Dataset\FoodSeg103_img\images\train"
 mask_folder = r"F:\Dataset\FoodSeg103_img\labels\train"
 output_image_folder = r"F:\Dataset\FoodSeg103_img\odimg"

@@ -27,7 +27,6 @@ def process_images(input_folder, output_folder, noise_type='gaussian'):
         cv2.imwrite(str(output_file), noisy_image)
         print(f"Processed: {img_file.name}")
 
-# 示例使用
-input_folder = r"F:\Dataset\FoodSeg103_img\odimg"  # 输入图像文件夹
-output_folder =  r"F:\Dataset\FoodSeg103_img\noise_odimg"  # 输出图像文件夹
+input_folder = r"F:\Dataset\FoodSeg103_img\odimg"
+output_folder =  r"F:\Dataset\FoodSeg103_img\noise_odimg" 
 process_images(input_folder, output_folder)
